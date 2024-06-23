@@ -1,11 +1,11 @@
-// routes/gameRoutes.js
-
 const express = require("express");
 const router = express.Router();
 const gameController = require("../controllers/gameController");
 
-// Define routes
-router.get("/games", gameController.getAllGames);
-router.post("/games", gameController.createGame);
+router.post("/", gameController.createGame);
+router.get("/", gameController.getAllGames);
+router.get("/:id", gameController.getGameById);
+router.put("/:id", gameController.updateGame);
+router.delete("/:id", gameController.deleteGame);
 
 module.exports = router;

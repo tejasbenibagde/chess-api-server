@@ -1,5 +1,3 @@
-// models/gameInvitations.js
-
 const { DataTypes } = require("sequelize");
 const sequelize = require("../services/database");
 const User = require("./users");
@@ -33,13 +31,13 @@ const GameInvitation = sequelize.define(
       defaultValue: "pending",
     },
     created_at: {
-      type: DataTypes.TIMESTAMP,
-      defaultValue: DataTypes.literal("CURRENT_TIMESTAMP"),
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
       allowNull: false,
     },
     updated_at: {
-      type: DataTypes.TIMESTAMP,
-      defaultValue: DataTypes.literal("CURRENT_TIMESTAMP"),
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
       allowNull: false,
     },
   },

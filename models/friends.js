@@ -1,5 +1,3 @@
-// models/friends.js
-
 const { DataTypes } = require("sequelize");
 const sequelize = require("../services/database");
 const User = require("./users");
@@ -24,8 +22,8 @@ const Friend = sequelize.define(
       },
     },
     created_at: {
-      type: DataTypes.TIMESTAMP,
-      defaultValue: DataTypes.literal("CURRENT_TIMESTAMP"),
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
       allowNull: false,
     },
   },
@@ -34,5 +32,7 @@ const Friend = sequelize.define(
     timestamps: false,
   }
 );
+
+Friend.belongsTo(User, { as: "FriendUser", foreignKey: "friend_id" });
 
 module.exports = Friend;
