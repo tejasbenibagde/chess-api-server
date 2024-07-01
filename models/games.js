@@ -46,6 +46,18 @@ const Game = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    white_rating: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    black_rating: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    rating_shift: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     tableName: "games",

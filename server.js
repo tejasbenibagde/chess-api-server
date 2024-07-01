@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const gameRoutes = require("./routes/gameRoutes");
 const userRoutes = require("./routes/userRoutes");
@@ -10,10 +11,21 @@ const chatRoutes = require("./routes/chatRoutes");
 const { PORT } = require("./config");
 require("./services/database");
 
+require("dotenv").config();
+
 const app = express();
 
 // Middleware
 app.use(bodyParser.json());
+
+// Configure CORS
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 // Routes
 app.use("/api/users", userRoutes);

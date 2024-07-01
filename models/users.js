@@ -1,5 +1,3 @@
-// models/users.js
-
 const { DataTypes } = require("sequelize");
 const sequelize = require("../services/database");
 
@@ -38,6 +36,22 @@ const User = sequelize.define(
     rating: {
       type: DataTypes.INTEGER,
       defaultValue: 1200,
+    },
+    total_games: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    highest_rating: {
+      type: DataTypes.INTEGER,
+      defaultValue: 1200,
+    },
+    friends: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    stats: {
+      type: DataTypes.FLOAT,
+      defaultValue: 0.0,
     },
   },
   {
