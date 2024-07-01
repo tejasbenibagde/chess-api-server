@@ -18,14 +18,24 @@ const app = express();
 // Middleware
 app.use(bodyParser.json());
 
-// Configure CORS
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+const allowedOrigins = [
+  "https://king-gambit.netlify.app",
+  "http://localhost:5173",
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ["GET", "POST"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 // Routes
 app.use("/api/users", userRoutes);
